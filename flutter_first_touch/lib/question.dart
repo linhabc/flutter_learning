@@ -6,6 +6,14 @@ class Question extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(_questionText);
+    return Container(
+      child: Text(
+        _questionText,
+        style: TextStyle(fontSize: 20),
+        textAlign: TextAlign.center,
+      ),
+      width: double.infinity,
+      margin: EdgeInsets.all(10),
+    );
   }
 }
