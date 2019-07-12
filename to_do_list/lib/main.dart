@@ -39,12 +39,18 @@ class HomePage extends StatelessWidget {
       ),
       body: StoreConnector<AppState, ViewModel>(
         converter: (Store<AppState> store) => ViewModel.create(store),
-        builder: (BuildContext context, ViewModel viewModel) => Column(
-          children: <Widget>[
-            AddItemWidget(viewModel),
-            Expanded(child: ItemListWidget(viewModel)),
-            RemoveItemWidget(viewModel),
-          ],
+        builder: (BuildContext context, ViewModel viewModel) => Scaffold(
+          floatingActionButton: FloatingActionButton(
+            child: Icon(Icons.delete),
+            onPressed: () => viewModel.onRemoveItems(),
+          ),
+          body: Column(
+            children: <Widget>[
+              AddItemWidget(viewModel),
+              Expanded(child: ItemListWidget(viewModel)),
+              // RemoveItemWidget(viewModel),
+            ],
+          ),
         ),
       ),
     );
@@ -66,9 +72,7 @@ class ViewModel {
 
   factory ViewModel.create(Store<AppState> store) {
     _onAddItem(String body) {
-      print(body);
       store.dispatch(AddItemAction(body));
-      print('log3');
     }
 
     _onRemoveItem(Item item) {
@@ -77,7 +81,6 @@ class ViewModel {
 
     _onRemoveItems() {
       store.dispatch(RemoveItemsAction());
-      print('log4');
     }
 
     return ViewModel(

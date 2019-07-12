@@ -7,14 +7,13 @@ AppState appStateReducer(AppState state, action) {
 
 List<Item> itemReducer(List<Item> state, action) {
   if (action is AddItemAction) {
-    print('object');
     return []
       ..addAll(state)
       ..add(Item(id: action.id, body: action.item));
   }
 
   if (action is RemoveItemAction) {
-    return List.unmodifiable(List.from(state))..remove(action.item);
+    return List.unmodifiable(List.from(state)..remove(action.item));
   }
 
   if (action is RemoveItemsAction) {
@@ -23,21 +22,3 @@ List<Item> itemReducer(List<Item> state, action) {
 
   return state;
 }
-
-// switch (action) {
-//   case AddItemAction:
-//     return []
-//       ..addAll(state)
-//       ..add(Item(id: action.id, body: action.item));
-//     break;
-
-//   case RemoveItemAction:
-//     return List.unmodifiable(List.from(state))..remove(action.item);
-//     break;
-
-//   case RemoveItemsAction:
-//     return List.unmodifiable([]);
-//     break;
-//   default:
-//     return state;
-// }
