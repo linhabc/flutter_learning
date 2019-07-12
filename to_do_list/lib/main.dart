@@ -22,7 +22,7 @@ class App extends StatelessWidget {
     return StoreProvider<AppState>(
       store: store,
       child: MaterialApp(
-        title: 'Redux Items',
+        title: 'To do list',
         theme: ThemeData(primarySwatch: Colors.purple),
         home: HomePage(),
       ),
@@ -66,7 +66,9 @@ class ViewModel {
 
   factory ViewModel.create(Store<AppState> store) {
     _onAddItem(String body) {
+      print(body);
       store.dispatch(AddItemAction(body));
+      print('log3');
     }
 
     _onRemoveItem(Item item) {
@@ -75,6 +77,7 @@ class ViewModel {
 
     _onRemoveItems() {
       store.dispatch(RemoveItemsAction());
+      print('log4');
     }
 
     return ViewModel(

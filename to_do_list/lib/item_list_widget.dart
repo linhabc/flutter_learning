@@ -11,15 +11,15 @@ class ItemListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: viewModel.items.map((Item item) {
-        return ListTile(
-          title: Text(item.body),
-          leading: IconButton(
-            icon: Icon(Icons.delete),
-            onPressed: () => viewModel.onRemoveItem(item),
-          ),
-        );
-      }).toList(),
+      children: viewModel.items
+          .map((Item item) => ListTile(
+                title: Text(item.body),
+                leading: IconButton(
+                  icon: Icon(Icons.delete),
+                  onPressed: () => viewModel.onRemoveItem(item),
+                ),
+              ))
+          .toList(),
     );
   }
 }

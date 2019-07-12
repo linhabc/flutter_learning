@@ -1,7 +1,7 @@
 import '../model/model.dart';
 
 class AddItemAction {
-  static int _id;
+  static int _id = 0;
   final String item;
 
   AddItemAction(this.item) {
