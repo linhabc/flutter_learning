@@ -42,7 +42,12 @@ class HomePage extends StatelessWidget {
         builder: (BuildContext context, ViewModel viewModel) => Scaffold(
           floatingActionButton: FloatingActionButton(
             child: Icon(Icons.delete),
-            onPressed: () => viewModel.onRemoveItems(),
+            onPressed: () {
+              viewModel.onRemoveItems();
+              final snackBar =
+                  SnackBar(content: Text('Remove all to do items'));
+              Scaffold.of(context).showSnackBar(snackBar);
+            },
           ),
           body: Column(
             children: <Widget>[
