@@ -17,3 +17,11 @@ class RemoveItemAction {
 }
 
 class RemoveItemsAction {}
+
+class GetItemsAction {}
+
+class LoadedItemsAction {
+  final List<Item> items;
+
+  LoadedItemsAction(this.items);
+}

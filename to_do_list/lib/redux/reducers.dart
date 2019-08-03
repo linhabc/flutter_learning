@@ -11,6 +11,7 @@ final Reducer<List<Item>> itemReducer = combineReducers([
   TypedReducer<List<Item>, AddItemAction>(addItem),
   TypedReducer<List<Item>, RemoveItemAction>(removeItem),
   TypedReducer<List<Item>, RemoveItemsAction>(removeItems),
+  TypedReducer<List<Item>, LoadedItemsAction>(loadedItems),
 ]);
 
 List<Item> addItem(List<Item> state, AddItemAction action) {
@@ -23,6 +24,10 @@ List<Item> removeItem(List<Item> state, RemoveItemAction action) {
 
 List<Item> removeItems(List<Item> state, RemoveItemsAction action) {
   return List.unmodifiable([]);
+}
+
+List<Item> loadedItems(List<Item> state, LoadedItemsAction action) {
+  return action.items;
 }
 
 // This equivalant to above itemReducer
